@@ -61,6 +61,7 @@ function playfairEncrypt(text, keyword) {
       encryptedText += keySquare[row1 * 5 + col2];
       encryptedText += keySquare[row2 * 5 + col1];
     }
+    console.log(encryptedText);
   }
 
   return encryptedText;
