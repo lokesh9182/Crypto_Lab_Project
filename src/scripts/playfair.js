@@ -27,8 +27,7 @@ function generateKeySquare(keyword) {
 // Function to perform Playfair encryption
 function playfairEncrypt(text, keyword) {
   const keySquare = generateKeySquare(keyword);
-  console.log("Generated Key Square:", text);
-  console.log(keySquare,text);console.log("Generated Key Square:", keyword);
+  console.log(keySquare,text);
   const textLength = text.length;
   let encryptedText = "";
   let pos1, pos2, row1, row2, col1, col2;
@@ -39,6 +38,7 @@ function playfairEncrypt(text, keyword) {
   }
 
   for (let i = 0; i < textLength; i += 2) {
+    console.log(text[i]);
     pos1 = keySquare.indexOf(text[i]);
     pos2 = keySquare.indexOf(text[i + 1]);
     row1 = Math.floor(pos1 / 5);
