@@ -1,6 +1,6 @@
 // Function to generate the key square
 function generateKeySquare(keyword) {
-  const alphabet = "ABCDEFGHIKLMNOPQRSTUVWXYZ";
+  const alphabet = "ABCDEFGHIJKLMNOPRSTUVWXYZ";
   const uniqueChars = [];
   const keySquare = [];
 
@@ -21,16 +21,14 @@ function generateKeySquare(keyword) {
       keySquare.push(alphabet[i]);
     }
   }
-console.log(keySquare);
-console.log("abcccc");
   return keySquare;
 }
 
 // Function to perform Playfair encryption
 function playfairEncrypt(text, keyword) {
   const keySquare = generateKeySquare(keyword);
-  console.log("Generated Key Square:", keySquare);
-  console.log("sdlkfjaskldjfaskldfjskldfjskdfjaksdjfdks");
+  console.log("Generated Key Square:", text);
+  console.log("Generated Key Square:", keySquare);console.log("Generated Key Square:", keyword);
   const textLength = text.length;
   let encryptedText = "";
   let pos1, pos2, row1, row2, col1, col2;
