@@ -105,7 +105,8 @@ function playfairDecrypt(text, keyword) {
 
   return decryptedText;
 }
-
+// Exporting the functions
+export { playfairEncrypt, playfairDecrypt };
 // Example usage:
 const keyword = "KEYWORD";
 const plaintext = "HELLO";
