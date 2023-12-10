@@ -21,7 +21,7 @@ function generateKeySquare(keyword) {
       keySquare.push(alphabet[i]);
     }
   }
-
+consol.log(keySquare);
   return keySquare;
 }
 
