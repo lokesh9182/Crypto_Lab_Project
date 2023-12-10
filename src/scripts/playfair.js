@@ -22,7 +22,7 @@ function generateKeySquare(keyword) {
     }
   }
 console.log(keySquare);
-
+console.log("abcccc");
   return keySquare;
 }
 
