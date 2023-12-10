@@ -24,6 +24,9 @@ function generateKeySquare(keyword) {
 
   return keySquare;
 }
+function isAlphabetic(str) {
+  return /^[a-zA-Z]+$/.test(str);
+}
 
 // Function to perform Playfair encryption
 function playfairEncrypt(text, keyword) {
@@ -38,6 +41,9 @@ function playfairEncrypt(text, keyword) {
   }
 
   for (let i = 0; i < textLength; i += 2) {
+        if (! isAlphabetic(text[i]){
+          decryptedText+=text[i];}
+    else{
     pos1 = keySquare.indexOf(text[i]);
     pos2 = keySquare.indexOf(text[i + 1]);
     row1 = Math.floor(pos1 / 5);
@@ -60,10 +66,12 @@ function playfairEncrypt(text, keyword) {
       encryptedText += keySquare[row1 * 5 + col2];
       encryptedText += keySquare[row2 * 5 + col1];
     }
+    }
   }
 
   return encryptedText;
 }
+
 
 // Function to perform Playfair decryption
 function playfairDecrypt(text, keyword) {
@@ -78,6 +86,9 @@ function playfairDecrypt(text, keyword) {
   }
 
   for (let i = 0; i < textLength; i += 2) {
+    if (! isAlphabetic(text[i]){
+          decryptedText+=text[i];}
+    else{
     pos1 = keySquare.indexOf(text[i]);
     pos2 = keySquare.indexOf(text[i + 1]);
     row1 = Math.floor(pos1 / 5);
@@ -99,6 +110,7 @@ function playfairDecrypt(text, keyword) {
     else {
       decryptedText += keySquare[row1 * 5 + col2];
       decryptedText += keySquare[row2 * 5 + col1];
+    }
     }
   }
 
