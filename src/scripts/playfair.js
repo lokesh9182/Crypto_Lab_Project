@@ -1,14 +1,13 @@
 // Function to generate the key square
 function generateKeySquare(keyword) {
-  const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  const alphabet = "ABCDEFGHIKLMNOPQRSTUVWXYZ";
   const uniqueChars = [];
   const keySquare = [];
 
   // Remove duplicate characters from the keyword
   for (const char of keyword) {
-    const upperChar = char.toUpperCase();
-    if (!uniqueChars.includes(upperChar)) {
-      uniqueChars.push(upperChar);
+    if (!uniqueChars.includes(char)) {
+      uniqueChars.push(char);
     }
   }
 
@@ -18,17 +17,17 @@ function generateKeySquare(keyword) {
   }
 
   for (let i = 0; i < alphabet.length; i++) {
-    const upperAlphabetChar = alphabet[i];
-    if (!uniqueChars.includes(upperAlphabetChar)) {
-      keySquare.push(upperAlphabetChar);
+    if (!uniqueChars.includes(alphabet[i])) {
+      keySquare.push(alphabet[i]);
     }
   }
+
   return keySquare;
 }
 
 // Function to perform Playfair encryption
 function playfairEncrypt(text, keyword) {
-  const keySquare = generateKeySquare(keyword.toUpperCase());
+  const keySquare = generateKeySquare(keyword);
   const textLength = text.length;
   let encryptedText = "";
   let pos1, pos2, row1, row2, col1, col2;
@@ -39,8 +38,8 @@ function playfairEncrypt(text, keyword) {
   }
 
   for (let i = 0; i < textLength; i += 2) {
-    pos1 = keySquare.indexOf(text[i].toUpperCase());
-    pos2 = keySquare.indexOf(text[i + 1].toUpperCase());
+    pos1 = keySquare.indexOf(text[i]);
+    pos2 = keySquare.indexOf(text[i + 1]);
     row1 = Math.floor(pos1 / 5);
     col1 = pos1 % 5;
     row2 = Math.floor(pos2 / 5);
@@ -68,7 +67,7 @@ function playfairEncrypt(text, keyword) {
 
 // Function to perform Playfair decryption
 function playfairDecrypt(text, keyword) {
-  const keySquare = generateKeySquare(keyword.toUpperCase());
+  const keySquare = generateKeySquare(keyword);
   const textLength = text.length;
   let decryptedText = "";
   let pos1, pos2, row1, row2, col1, col2;
@@ -79,8 +78,8 @@ function playfairDecrypt(text, keyword) {
   }
 
   for (let i = 0; i < textLength; i += 2) {
-    pos1 = keySquare.indexOf(text[i].toUpperCase());
-    pos2 = keySquare.indexOf(text[i + 1].toUpperCase());
+    pos1 = keySquare.indexOf(text[i]);
+    pos2 = keySquare.indexOf(text[i + 1]);
     row1 = Math.floor(pos1 / 5);
     col1 = pos1 % 5;
     row2 = Math.floor(pos2 / 5);
@@ -105,12 +104,6 @@ function playfairDecrypt(text, keyword) {
 
   return decryptedText;
 }
+
 // Exporting the functions
 export { playfairEncrypt, playfairDecrypt };
-// Example usage:
-const keyword = "KEYWORD";
-const plaintext = "HELLO";
-const ciphertext = playfairEncrypt(plaintext, keyword);
-console.log("Encrypted: ", ciphertext);
-const decryptedText = playfairDecrypt(ciphertext, keyword);
-console.log("Decrypted: ", decryptedText);
